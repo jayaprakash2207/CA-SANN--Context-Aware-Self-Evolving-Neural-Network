@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+runs/
+vendor/
+data/
+*.pyc
+*.pyo
+*.pyd
+*.zip
+
+# Large generated exports and local visualization data
+data.json

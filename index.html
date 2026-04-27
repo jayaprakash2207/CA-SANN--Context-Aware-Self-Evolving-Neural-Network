@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SANN / VA-SANN / CA-SANN — 3D Visualizer</title>
+  <link rel="stylesheet" href="./style.css" />
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./vendor/three/build/three.module.js",
+        "three/addons/": "./vendor/three/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="title">Adaptive NN 3D Visualizer</div>
+      <div class="subtitle">Static / SANN / CA-SANN — epoch-by-epoch growth</div>
+    </div>
+
+    <div class="controls">
+      <label class="control">
+        <span class="control-label">Model</span>
+        <select id="modelSelect" class="select">
+          <option value="Static">Static</option>
+          <option value="SANN">SANN</option>
+          <option value="CA-SANN">CA-SANN</option>
+        </select>
+      </label>
+
+      <label class="control slider">
+        <span class="control-label">Epoch</span>
+        <input id="epochSlider" type="range" min="0" max="0" step="1" value="0" />
+        <span id="epochLabel" class="pill">—</span>
+      </label>
+
+      <button id="playPause" class="button">Play</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="viewer">
+      <div id="canvasContainer" class="canvas"></div>
+      <div id="hint" class="hint">Rotate: drag • Zoom: scroll • Pan: right-drag</div>
+      <div id="flash" class="flash" aria-hidden="true"></div>
+    </section>
+
+    <aside class="side">
+      <div class="panel">
+        <div class="panel-title">Run Snapshot</div>
+        <div class="kv">
+          <div class="k">Model</div><div id="sModel" class="v">—</div>
+          <div class="k">Epoch</div><div id="sEpoch" class="v">—</div>
+          <div class="k">Accuracy</div><div id="sAcc" class="v">—</div>
+          <div class="k">Model size</div><div id="sSize" class="v">—</div>
+          <div class="k">Efficiency</div><div id="sEff" class="v">—</div>
+          <div class="k">Growth event</div><div id="sGrowth" class="v">—</div>
+          <div class="k">Decision</div><div id="sDecision" class="v">—</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">Legend</div>
+        <div class="legend">
+          <div class="legend-row"><span class="swatch blue"></span><span>Normal neurons</span></div>
+          <div class="legend-row"><span class="swatch green"></span><span>New neurons</span></div>
+          <div class="legend-row"><span class="swatch red"></span><span>Removed neurons</span></div>
+          <div class="legend-row"><span class="swatch yellow"></span><span>Output layer</span></div>
+        </div>
+      </div>
+
+      <div class="panel note">
+        <div class="panel-title">Note</div>
+        <div class="small">
+          Open via a local server (recommended):<br />
+          <code>python -m http.server 8000</code><br />
+          then visit <code>http://localhost:8000</code>.
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <script type="module" src="./script.js?v=20260427"></script>
+</body>
+</html>
