@@ -331,7 +331,7 @@ results = run_training(config)
 
 | Parameter | Default | Description |
 |---|---|---|
-| `epochs` | `5` | Total training epochs |
+| `epochs` | `5` | Total training epochs (quick-start default; use 50–100 for real experiments) |
 | `batch_size` | `256` | Training batch size |
 | `learning_rate` | `8e-4` | Adam optimizer learning rate |
 | `weight_decay` | `1e-5` | L2 regularization strength |
