@@ -9,5 +9,4 @@ data/
 *.pyd
 *.zip
 
-# Large generated exports and local visualization data
-data.json
+# Large generated exports and local runtime data

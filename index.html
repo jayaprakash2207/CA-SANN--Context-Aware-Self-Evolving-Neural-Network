@@ -3,23 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SANN / VA-SANN / CA-SANN — 3D Visualizer</title>
+  <title>Context-Aware Adaptive Neural Network | 3D Visualizer</title>
   <link rel="stylesheet" href="./style.css" />
-
-  <script type="importmap">
-    {
-      "imports": {
-        "three": "./vendor/three/build/three.module.js",
-        "three/addons/": "./vendor/three/examples/jsm/"
-      }
-    }
-  </script>
 </head>
 <body>
   <header class="topbar">
     <div class="brand">
-      <div class="title">Adaptive NN 3D Visualizer</div>
-      <div class="subtitle">Static / SANN / CA-SANN — epoch-by-epoch growth</div>
+      <div class="eyebrow">Context-Aware Adaptive Neural Network</div>
+      <div class="title">3D Growth Visualizer</div>
+      <div class="subtitle">Static, SANN, and CA-SANN shown epoch by epoch</div>
     </div>
 
     <div class="controls">
@@ -35,7 +27,7 @@
       <label class="control slider">
         <span class="control-label">Epoch</span>
         <input id="epochSlider" type="range" min="0" max="0" step="1" value="0" />
-        <span id="epochLabel" class="pill">—</span>
+        <span id="epochLabel" class="pill">-</span>
       </label>
 
       <button id="playPause" class="button">Play</button>
@@ -43,23 +35,50 @@
   </header>
 
   <main class="layout">
-    <section class="viewer">
-      <div id="canvasContainer" class="canvas"></div>
-      <div id="hint" class="hint">Rotate: drag • Zoom: scroll • Pan: right-drag</div>
-      <div id="flash" class="flash" aria-hidden="true"></div>
+    <section class="main-column">
+      <section class="hero panel">
+        <div class="hero-copy">
+          <div class="panel-title">What this page shows</div>
+          <p class="hero-text">
+            This interactive view compares how a fixed network, a self-adaptive network,
+            and a context-aware adaptive network evolve over training. Rotate the scene,
+            scrub through epochs, and inspect when growth decisions happen.
+          </p>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-label">Dataset</span>
+            <span id="metaDataset" class="hero-stat-value">-</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-label">Seed</span>
+            <span id="metaSeed" class="hero-stat-value">-</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-label">Epochs</span>
+            <span id="metaEpochs" class="hero-stat-value">-</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="viewer">
+        <div id="canvasContainer" class="canvas"></div>
+        <div id="hint" class="hint">Rotate: drag • Zoom: scroll • Pan: right-drag</div>
+        <div id="flash" class="flash" aria-hidden="true"></div>
+      </section>
     </section>
 
     <aside class="side">
       <div class="panel">
         <div class="panel-title">Run Snapshot</div>
         <div class="kv">
-          <div class="k">Model</div><div id="sModel" class="v">—</div>
-          <div class="k">Epoch</div><div id="sEpoch" class="v">—</div>
-          <div class="k">Accuracy</div><div id="sAcc" class="v">—</div>
-          <div class="k">Model size</div><div id="sSize" class="v">—</div>
-          <div class="k">Efficiency</div><div id="sEff" class="v">—</div>
-          <div class="k">Growth event</div><div id="sGrowth" class="v">—</div>
-          <div class="k">Decision</div><div id="sDecision" class="v">—</div>
+          <div class="k">Model</div><div id="sModel" class="v">-</div>
+          <div class="k">Epoch</div><div id="sEpoch" class="v">-</div>
+          <div class="k">Accuracy</div><div id="sAcc" class="v">-</div>
+          <div class="k">Model size</div><div id="sSize" class="v">-</div>
+          <div class="k">Efficiency</div><div id="sEff" class="v">-</div>
+          <div class="k">Growth event</div><div id="sGrowth" class="v">-</div>
+          <div class="k">Decision</div><div id="sDecision" class="v">-</div>
         </div>
       </div>
 
@@ -74,16 +93,23 @@
       </div>
 
       <div class="panel note">
-        <div class="panel-title">Note</div>
+        <div class="panel-title">Project Note</div>
         <div class="small">
-          Open via a local server (recommended):<br />
-          <code>python -m http.server 8000</code><br />
-          then visit <code>http://localhost:8000</code>.
+          This page reads from the checked-in <code>data.json</code> file, so it can run directly
+          from GitHub Pages or any static web server.
+        </div>
+      </div>
+
+      <div class="panel note">
+        <div class="panel-title">Source</div>
+        <div class="small">
+          <div>Input source: <span id="metaSource">-</span></div>
+          <div id="metaNotes" class="meta-notes"></div>
         </div>
       </div>
     </aside>
   </main>
 
-  <script type="module" src="./script.js?v=20260427"></script>
+  <script type="module" src="./script.js?v=20260427b"></script>
 </body>
 </html>

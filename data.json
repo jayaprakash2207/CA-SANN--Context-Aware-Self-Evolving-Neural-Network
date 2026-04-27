@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "dataset": "cifar10",
+    "seed": 13,
+    "source": "runs/cifar10_underfit_delayed_acceptance_smoke",
+    "notes": "Precomputed per-epoch metrics (accuracy/model_size/efficiency/growth_events) from result.json. Layer widths are simplified to visualize growth at the growth-event epoch."
+  },
+  "models": {
+    "Static": {
+      "epochs": [1, 2, 3, 4],
+      "metrics": {
+        "accuracy": [0.1640625, 0.21875, 0.2578125, 0.25390625],
+        "model_size": [94986, 94986, 94986, 94986],
+        "efficiency": [1.727228223106563e-06, 2.302970964142084e-06, 2.7142157791674562e-06, 2.673091297664919e-06]
+      },
+      "events": {
+        "growth_events_cumulative": [0, 0, 0, 0],
+        "rejected_growth_events_cumulative": [0, 0, 0, 0]
+      },
+      "structure": {
+        "output_width": 10,
+        "hidden_widths_by_epoch": {
+          "1": [32, 64, 128],
+          "2": [32, 64, 128],
+          "3": [32, 64, 128],
+          "4": [32, 64, 128]
+        }
+      }
+    },
+    "SANN": {
+      "epochs": [1, 2, 3, 4],
+      "metrics": {
+        "accuracy": [0.18359375, 0.2734375, 0.24609375, 0.28515625],
+        "model_size": [96198, 96198, 96198, 96198],
+        "efficiency": [1.908498617434874e-06, 2.8424447493710886e-06, 2.5582002744339797e-06, 2.964263810058421e-06]
+      },
+      "events": {
+        "growth_events_cumulative": [0, 1, 1, 1],
+        "rejected_growth_events_cumulative": [0, 0, 0, 0]
+      },
+      "structure": {
+        "output_width": 10,
+        "hidden_widths_by_epoch": {
+          "1": [32, 64, 128],
+          "2": [34, 64, 128],
+          "3": [34, 64, 128],
+          "4": [34, 64, 128]
+        }
+      }
+    },
+    "CA-SANN": {
+      "epochs": [1, 2, 3, 4],
+      "metrics": {
+        "accuracy": [0.203125, 0.25, 0.28125, 0.30078125],
+        "model_size": [96198, 96198, 96198, 96198],
+        "efficiency": [2.1115303852470944e-06, 2.598806627996424e-06, 2.923657456495977e-06, 3.1266892243081975e-06]
+      },
+      "events": {
+        "growth_events_cumulative": [0, 0, 1, 1],
+        "rejected_growth_events_cumulative": [0, 0, 0, 0]
+      },
+      "structure": {
+        "output_width": 10,
+        "hidden_widths_by_epoch": {
+          "1": [32, 64, 128],
+          "2": [32, 64, 128],
+          "3": [34, 64, 128],
+          "4": [34, 64, 128]
+        }
+      }
+    }
+  }
+}
