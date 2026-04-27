@@ -1,8 +1,8 @@
-import * as THREE from 'https://unpkg.com/three@0.164.1/build/three.module.js';
-import { OrbitControls } from 'https://unpkg.com/three@0.164.1/examples/jsm/controls/OrbitControls.js';
-import { EffectComposer } from 'https://unpkg.com/three@0.164.1/examples/jsm/postprocessing/EffectComposer.js';
-import { RenderPass } from 'https://unpkg.com/three@0.164.1/examples/jsm/postprocessing/RenderPass.js';
-import { UnrealBloomPass } from 'https://unpkg.com/three@0.164.1/examples/jsm/postprocessing/UnrealBloomPass.js';
+import * as THREE from './vendor/three/build/three.module.js';
+import { OrbitControls } from './vendor/three/examples/jsm/controls/OrbitControls.js';
+import { EffectComposer } from './vendor/three/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from './vendor/three/examples/jsm/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from './vendor/three/examples/jsm/postprocessing/UnrealBloomPass.js';
 
 const COLORS = {
   existing: 0x1f77b4,
@@ -649,7 +649,16 @@ function pause() {
 }
 
 async function main() {
-  const res = await fetch('./data.json');
+  let res;
+  try {
+    res = await fetch('./data.json');
+  } catch (error) {
+    if (window.location.protocol === 'file:') {
+      throw new Error('Open this page through a local static server so data.json can be loaded.');
+    }
+    throw error;
+  }
+
   if (!res.ok) {
     throw new Error(`Failed to load data.json: ${res.status}`);
   }

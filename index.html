@@ -63,7 +63,7 @@
 
       <section class="viewer">
         <div id="canvasContainer" class="canvas"></div>
-        <div id="hint" class="hint">Rotate: drag • Zoom: scroll • Pan: right-drag</div>
+        <div id="hint" class="hint">Rotate: drag | Zoom: scroll | Pan: right-drag</div>
         <div id="flash" class="flash" aria-hidden="true"></div>
       </section>
     </section>
@@ -95,8 +95,8 @@
       <div class="panel note">
         <div class="panel-title">Project Note</div>
         <div class="small">
-          This page reads from the checked-in <code>data.json</code> file, so it can run directly
-          from GitHub Pages or any static web server.
+          This page reads from the checked-in <code>data.json</code> file and runs from
+          GitHub Pages or any local static web server.
         </div>
       </div>
 
@@ -110,6 +110,13 @@
     </aside>
   </main>
 
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./vendor/three/build/three.module.js"
+      }
+    }
+  </script>
   <script type="module" src="./script.js?v=20260427b"></script>
 </body>
 </html>

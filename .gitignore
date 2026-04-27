@@ -3,6 +3,8 @@ __pycache__/
 .ipynb_checkpoints/
 runs/
 vendor/
+!vendor/three/
+!vendor/three/**
 data/
 *.pyc
 *.pyo
